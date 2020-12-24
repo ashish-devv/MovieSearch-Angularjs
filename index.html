@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>🎬Movie-Home</title>
+  </head>
+  <body ng-controller="appcontroller">
+    <section class="header text-white">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand text-white title">🎬Movie Search </a>
+        <ul class="navbar-nav mr-auto mx-1">
+          <li class="nav-item">
+            <a
+              href="https://github.com/ashish-devv"
+              class="btn btn-success border border-dark"
+              >About Developer🔥</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+          <h1 class="display-4">
+            🎬Get All Latest Info About Movies.<small class="lead code"
+              >By Ashish 👋</small
+            >
+          </h1>
+          <form class="form-inline">
+            <input
+              class="form-control mr-sm-2 border border-dark"
+              type="search"
+              placeholder="Search Here 👌"
+              aria-label="Search"
+              ng-model="keyword"
+              required
+            />
+            <button
+              class="btn btn-primary my-2 my-sm-0 border border-dark"
+              ng-click="search(keyword);"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="container-fluid">
+      <div ng-hide="showerror">
+        <h3 class="text-center text-primary m-2">
+          Your Query Keyword Is Not Sufficent.Try Again 🔄
+        </h3>
+      </div>
+      <div class="card-columns" ng-init="showmovies();">
+        <div ng-hide="false">
+          <div class="card" ng-repeat="x in results">
+            <img
+              class="card-img-top"
+              ng-src="{{x.Poster}}"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{x.Title}}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Year</b>:{{x.Year}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" ng-hide="hide">
+          <img
+            class="card-img-top"
+            ng-src="{{movies.Poster}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><b>{{movies.Title}}</b></h5>
+            <p class="card-text"><b>{{movies.Plot}}</b></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>IMDB Rating</b>: {{movies.imdbRating}}
+            </li>
+            <li class="list-group-item"><b>Genre</b>: {{movies.Genre}}</li>
+            <li class="list-group-item">
+              <b>Director</b>: {{movies.Director}}
+            </li>
+          </ul>
+          <div class="card-body">
+            <p>
+              <b>{{movies.Ratings[0].Source}}</b>-{{movies.Ratings[0].Value}}
+              <br />
+              <b>{{movies.Ratings[1].Source}}</b>-{{movies.Ratings[1].Value}}
+              <br />
+              <b>{{movies.Ratings[2].Source}}</b>-{{movies.Ratings[2].Value}}
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
