@@ -1,10 +1,10 @@
 var app = angular.module("myapp", []);
 app.controller("appcontroller", ($scope, $http) => {
-  var url = "http://www.omdbapi.com/?apikey=b8dda974&s=";
+  var url = "https://www.omdbapi.com/?apikey=b8dda974&s=";
   $scope.showresults = true;
   $scope.showerror = true;
   var a = (keyboard) => {
-    $http.get("http://www.omdbapi.com/?i=tt3896198&apikey=b8dda974").then(
+    $http.get("https://www.omdbapi.com/?i=tt3896198&apikey=b8dda974").then(
       (response) => {
         $scope.movies = response.data;
       },
